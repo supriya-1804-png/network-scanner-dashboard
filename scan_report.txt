@@ -1,0 +1,14 @@
+NETWORK SCAN REPORT
+=============================
+
+Target: 127.0.0.1
+
+Host: 127.0.0.1
+Status: up
+
+Protocol: tcp
+Port 135: open
+Port 445: open
+Port 3389: open
+Port 5000: open
+

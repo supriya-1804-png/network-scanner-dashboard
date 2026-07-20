@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Network Scanner Dashboard</title>
+
+    <style>
+
+        body{
+            background:#0f172a;
+            color:white;
+            font-family:Arial, Helvetica, sans-serif;
+            text-align:center;
+            margin:0;
+            padding:40px;
+        }
+
+        h1{
+            color:#38bdf8;
+            font-size:60px;
+        }
+
+        input{
+            padding:12px;
+            width:280px;
+            font-size:18px;
+            border-radius:8px;
+            border:none;
+        }
+
+        button{
+            padding:12px 22px;
+            font-size:18px;
+            border:none;
+            border-radius:8px;
+            background:#2563eb;
+            color:white;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#1d4ed8;
+        }
+
+        table{
+            width:60%;
+            margin:auto;
+            margin-top:30px;
+            border-collapse:collapse;
+            font-size:24px;
+        }
+
+        th{
+            background:#2563eb;
+            padding:15px;
+        }
+
+        td{
+            padding:15px;
+            background:#1e293b;
+            border:1px solid #475569;
+        }
+
+        .open{
+            color:#39ff14;
+            font-weight:bold;
+        }
+
+        .download-btn{
+            margin-top:40px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<h1>🌐 Network Scanner Dashboard</h1>
+
+<form method="POST">
+
+    <input
+        type="text"
+        name="target"
+        placeholder="Enter IP Address (e.g. 127.0.0.1)"
+        required>
+
+    <button type="submit">🔍 Scan</button>
+
+</form>
+
+{% if target %}
+
+<h2>Target: {{ target }}</h2>
+
+<h2>Total Open Ports: {{ total_ports }}</h2>
+
+<table>
+
+<tr>
+    <th>Port</th>
+    <th>Status</th>
+</tr>
+
+{% for p in ports %}
+
+<tr>
+
+    <td>{{ p.port }}</td>
+
+    <td class="open">
+        🟢 {{ p.state|capitalize }}
+    </td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<div class="download-btn">
+
+    <a href="/download">
+        <button>📄 Download Scan Report</button>
+    </a>
+
+</div>
+
+{% endif %}
+
+</body>
+</html>
+
